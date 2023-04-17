@@ -1,0 +1,13 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Hidden files
+.*
+!/.gitignore
+
+# C-compile artifacts and executables
+*.o
+*.exe
+
