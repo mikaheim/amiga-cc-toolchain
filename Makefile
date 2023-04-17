@@ -1,6 +1,6 @@
 APP_NAME=amiga-cc-toolchain
 DOCKER_REPO=mikaheim
-VERSION=$(shell git symbolic-ref -q --short HEAD || git describe --tags --exact-match)
+VERSION=$(shell git describe --tags --exact-match || git symbolic-ref -q --short HEAD )
 GIT_REF=$(shell git rev-parse --short HEAD)
 NOW_DATE=$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 
