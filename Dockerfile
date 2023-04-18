@@ -5,7 +5,7 @@ WORKDIR /tmp
 RUN apt-get -y update && apt -y install make wget git gcc g++ lhasa libgmp-dev \
     libmpfr-dev libmpc-dev flex bison gettext texinfo ncurses-dev autoconf \
     rsync libreadline-dev
-RUN git clone https://github.com/bebbo/amiga-gcc
+RUN git clone https://github.com/mikaheim/amiga-gcc
 WORKDIR /tmp/amiga-gcc
 RUN make all
 
