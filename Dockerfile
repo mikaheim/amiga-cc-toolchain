@@ -5,7 +5,7 @@ WORKDIR /tmp
 RUN apt-get -y update && apt -y install make wget git gcc g++ lhasa libgmp-dev \
     libmpfr-dev libmpc-dev flex bison gettext texinfo ncurses-dev autoconf \
     rsync libreadline-dev
-RUN git clone https://github.com/mikaheim/amiga-gcc
+RUN git clone https://github.com/bebbo/amiga-gcc
 WORKDIR /tmp/amiga-gcc
 RUN make all
 
@@ -20,15 +20,14 @@ ARG GIT_REF
 WORKDIR /opt/source
 
 # Labels
-LABEL maintainer="mikaheim@gmail.com"
-LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.version=${VERSION}
-LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.name="mikaheim/amiga-cc-toolchain"
-LABEL org.label-schema.description="Amiga Cross-Compiling Toolchain"
-LABEL org.label-schema.vcs-url="https://github.com/mikaheim/amiga-cc-toolchain"
-LABEL org.label-schema.vcs-ref=${GIT_REF}
-LABEL org.label-schema.docker.cmd="docker run --rm -v ~/:/opt/source mikaheim/amiga-cc-toolchain m68k-amigaos-gcc -mcrt=nix13 examples/hello-world/hello-world.c -o examples/hello-world/hello-world.exe"
+LABEL org.opencontainers.image.authors="M. Ikäheimo <mikaheim@gmail.com>"
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.created=${BUILD_DATE}
+LABEL org.opencontainers.image.title="mikaheim/amiga-cc-toolchain"
+LABEL org.opencontainers.image.description="Amiga Cross-Compiling Toolchain"
+LABEL org.opencontainers.image.source="https://github.com/mikaheim/amiga-cc-toolchain"
+LABEL org.opencontainers.image.revision=${GIT_REF}
+LABEL org.opencontainers.image.documentation="docker run --rm -v ~/:/opt/source mikaheim/amiga-cc-toolchain m68k-amigaos-gcc -mcrt=nix13 examples/hello-world/hello-world.c -o examples/hello-world/hello-world.exe"
 
 # Needed libraries
 RUN apt-get -y update && apt -y install lhasa libmpc-dev libgmp-dev libmpfr-dev ncurses-dev make libreadline-dev && apt -y autoclean
