@@ -11,3 +11,10 @@
 *.o
 *.exe
 
+# Amiga Emulator files
+Disk.info
+*.uaem
+
+# Compressed files
+*.lha
+*.zip

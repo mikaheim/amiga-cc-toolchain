@@ -1,6 +1,6 @@
 CNTR=docker run --rm -ti -v $(shell pwd)/:/opt/source mikaheim/amiga-cc-toolchain
 GCC=$(CNTR) m68k-amigaos-gcc
-VC=$(CNTR) vc +kick13 -c99 -O2 -lauto -lamiga
+VC=$(CNTR) vc -c99 -O2 -lauto -lamiga
 VC13=$(CNTR) vc +kick13 -c99 -O2 -lauto -lamiga
 
 SRCS:=$(wildcard *.c)
@@ -19,7 +19,7 @@ vc/%.exe: %.c
 	$(VC) $< -o $@
 
 vc13/%.exe: %.c
-	$(VC13) $< -o $@
+	@if [ $< != "gfx-test.c" ]; then $(VC13) $< -o $@; fi;
 
 clean:
 	@rm -rf *.exe $(EXE_DIRS) 

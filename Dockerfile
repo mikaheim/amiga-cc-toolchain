@@ -8,7 +8,11 @@ RUN apt-get -y update && apt -y install make wget git gcc g++ lhasa libgmp-dev \
 RUN git clone https://github.com/bebbo/amiga-gcc
 WORKDIR /tmp/amiga-gcc
 RUN make all
-
+RUN wget https://www.dropbox.com/s/5kougfenyw9qa4h/ndk13.lha?dl=1 -O ndk13.lha
+RUN echo $(pwd) && echo $(ls -al)
+RUN lha xw=/tmp ndk13.lha
+RUN mv /tmp/NDK_1.3/Includes1.3/include.h /opt/amiga/m68k-kick13/ndk-include
+RUN chmod a+r -R /opt/amiga/m68k-kick13/ndk-include
 # Final image stage
 FROM ubuntu:latest AS image
 
